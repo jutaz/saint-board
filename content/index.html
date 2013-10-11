@@ -7,10 +7,71 @@
 </head>
 <body>
   <div class="row">
-    <div class="col-md-4 sidebar">.col-md-8</div>
-    <div class="col-md-8">.col-md-4</div>
+    <div class="col-md-12 widgets">
+      <div class="clock">
+        <h1 class="hours" style="text-align: center; font-size: 600%;"></h1>
+        <h1 class="date" style="text-align: center; font-size: 400%;"></h1>
+      </div>
+    </div>
+    <!-- <div class="col-md-8">.col-md-4</div> -->
   </div>
   <script type="text/javascript" src="js/jquery.min.js"></script>
   <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function() {
+    startTime();
+    setInterval(startTime,500);
+
+    function startTime() {
+      var today=new Date();
+      var h=today.getHours();
+      var m=today.getMinutes();
+      var s=today.getSeconds();
+      m=checkTime(m);
+      s=checkTime(s);
+      $('.hours').html(h+":"+m+":"+s);
+      $('.date').html(getDate(today));
+    }
+    function getDate(today) {
+      var day = today.getDate();
+      var month = getMonthName(today.getMonth());
+      return month+" "+day;
+    }
+    function getMonthName(month) {
+      switch(month) {
+        case 0:
+        return "Sausis";
+        case 1:
+        return "Vasaris";
+        case 2:
+        return "Kovas";
+        case 3:
+        return "Balandis";
+        case 4:
+        return "Gegužė";
+        case 5:
+        return "Birželis";
+        case 6:
+        return "Liepa";
+        case 7:
+        return "Rugpjūtis";
+        case 8:
+        return "Rugsėjis";
+        case 9:
+        return "Spalis";
+        case 10:
+        return "Lapkritis";
+        case 11:
+        return "gruodis";
+      }
+    }
+    function checkTime(i) {
+      if (i<10) {
+        i="0" + i;
+      }
+      return i;
+    }
+  });
+</script>
 </body>
 </html>
