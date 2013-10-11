@@ -1,4 +1,3 @@
-
 var appjs = require('appjs');
 
 // serve static files from a directory
@@ -10,8 +9,6 @@ appjs.router.post('/', function(request, response, next){
 })
 
 var window = appjs.createWindow({
-  width: 640,
-  height: 460,
   alpha: false,
   fullscreen: true,
   showChrome: false
@@ -23,15 +20,19 @@ window.on('create', function(){
 });
 
 window.on('ready', function(){
-  console.log("Window Ready");
   window.process = process;
   window.module = module;
+  window.require = require;
 
-  window.addEventListener('keydown', function(e){
+  window.addEventListener('keydown', function(e) {
+    if (e.keyCode === 27) {
+      window.close();
+    }
     if (e.keyIdentifier === 'F12' || e.keyCode === 74 && e.metaKey && e.altKey) {
       window.frame.openDevTools();
     }
   });
+  
 });
 
 window.on('close', function(){
