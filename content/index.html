@@ -4,7 +4,6 @@
   <meta charset="utf-8">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/custom.css" rel="stylesheet">
-  <title>Hello World!</title>
 </head>
 <body>
   <div class="row content">
@@ -13,12 +12,36 @@
         <h1 class="hours" style="text-align: center; font-size: 600%;"></h1>
         <h1 class="date" style="text-align: center; font-size: 400%;"></h1>
       </div>
-      <hr>
+      <hr class="separator-line">
       <div class="weather">
-        <div class="weather-tile"></div>
+        <div class="weather-tile current row">
+          <h1 class="time pull-left col-md-3"></h1>
+          <img class="condition img-responsive col-md-6">
+          <h1 class="temperature pull-right col-md-3"></h1>
+        </div>
+        <div class="weather-tile row">
+          <h1 class="time pull-left col-md-3"></h1>
+          <img class="condition img-responsive col-md-6">
+          <h1 class="temperature pull-right col-md-3"></h1>
+        </div>
+        <div class="weather-tile row">
+          <h1 class="time pull-left col-md-3"></h1>
+          <img class="condition img-responsive col-md-6">
+          <h1 class="temperature pull-right col-md-3"></h1>
+        </div>          
+        <div class="weather-tile row">
+          <h1 class="time pull-left col-md-3"></h1>
+          <img class="condition img-responsive col-md-6">
+          <h1 class="temperature pull-right col-md-3"></h1>
+        </div>          
+        <div class="weather-tile row">
+          <h1 class="time pull-left col-md-3"></h1>
+          <img class="condition img-responsive col-md-6">
+          <h1 class="temperature pull-right col-md-3"></h1>
+        </div>
       </div>
     </div>
-    <div class="col-md-8">.col-md-4</div>
+    <div class="col-md-8"></div>
   </div>
   <script type="text/javascript" src="js/jquery.min.js"></script>
   <script type="text/javascript" src="js/bootstrap.min.js"></script>
@@ -26,9 +49,9 @@
   $(document).ready(function() {
     startTime();
     setInterval(startTime,500);
-
+    update_weather(window.forecast);
     setInterval(function() {
-      console.log(window.forecast);
+      update_weather(window.forecast);
     }, 1000);
 
     function startTime() {
@@ -79,6 +102,51 @@
         i="0" + i;
       }
       return i;
+    }
+    function update_weather(forecast) {
+      if(!forecast) {
+        return;
+      }
+      childs = $(".weather").children().not('.current');
+      $(".current").find(".time").html("Dabar");
+      $(".current").find(".temperature").html(parseInt(forecast.currently.temperature)+"\u00B0");
+      $(".current").find(".condition").attr('src', get_condition_icon(forecast.currently.icon));
+      var child;
+      for(var i = 0; i < 5; i++) {
+        if(i == 0) {
+          child = childs.first();
+        } else {
+          child = child.next();
+        }
+        time = new Date(forecast.hourly.data[i].time*1000);
+        child.find(".time").html(time.getHours()+":00");
+        child.find(".condition").attr('src', get_condition_icon(forecast.hourly.data[i].icon));
+        child.find(".temperature").html(parseInt(forecast.hourly.data[i].temperature)+"\u00B0");
+      }
+    }
+    function get_condition_icon(condition) {
+      icon = "";
+      switch(condition) {
+        case "clear-day":
+        icon = "img/icons/Weather-Sun-icon.png";
+        case "clear-night":
+        icon = "img/icons/Weather-Moon-icon.png";
+        case "rain":
+        icon = "img/icons/Weather-Rain-icon.png";
+        case "snow":
+        icon = "img/icons/Weather-Snow-icon.png";
+        case "fog":
+        icon = "img/icons/Weather-Fog-day-icon.png";
+        case "sleet":
+        icon = "img/icons/Weather-Sleet-icon.png";
+        case "partly-cloudy-day":
+        icon = "img/icons/Weather-Partly-cloudy-day-icon.png";
+        case "partly-cloudy-night":
+        icon = "img/icons/Weather-Partly-cloudy-night-icon.png";
+        default: 
+        icon = "img/icons/Weather-Partly-cloudy-day-icon.png";
+      }
+      return icon;
     }
   });
 </script>
