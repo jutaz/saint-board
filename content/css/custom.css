@@ -1,19 +1,19 @@
-body {
-	margin: 10px;
+html, body {
+	height: 100%;
 }
-html, body {height: 100%}
 .content {
 	min-height: 100%;
 	height: 100%;
 	margin: 0px !important;
-	margin-top: -10px !important;
 }
 .widgets {
+	min-height: 100%;
+	height: 100%;
+}
+.shadow-right {
 	-webkit-box-shadow: 10px 0px 5px -4px #888;
 	-moz-box-shadow: 10px 0px 5px -4px #888;
 	box-shadow: 10px 0px 5px -4px #888;
-	min-height: 100%;
-	height: 100%;
 }
 .noBlur {
 	-webkit-filter: none;

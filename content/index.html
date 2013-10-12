@@ -8,10 +8,13 @@
 </head>
 <body>
   <div class="row content">
-    <div class="col-md-4 widgets">
+    <div class="col-md-4 widgets shadow-right">
       <div class="clock">
         <h1 class="hours" style="text-align: center; font-size: 600%;"></h1>
         <h1 class="date" style="text-align: center; font-size: 400%;"></h1>
+      </div>
+      <hr>
+      <div class="weather">
       </div>
     </div>
     <div class="col-md-8">.col-md-4</div>
@@ -22,7 +25,12 @@
   $(document).ready(function() {
     startTime();
     setInterval(startTime,500);
+    url = "http://query.yahooapis.com/v1/public/yql?q=SELECT%20*%20FROM%20weather.bylocation%20WHERE%20location%3D'Kaunas'%20AND%20unit%3D%22c%22&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback="; 
 
+    $.getJSON(url, function(data) {
+      $('.weather').html(data.query.results.weather.rss.channel.item.description);
+      console.log(data.query.results.weather.rss.channel.item);
+    });
     function startTime() {
       var today=new Date();
       var h=today.getHours();
