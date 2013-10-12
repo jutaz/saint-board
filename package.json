@@ -10,6 +10,7 @@
   "license": "BSD-2-Clause",
   "dependencies": {
     "appjs-linux-x64": "0.0.19",
-    "appjs": "0.0.20"
+    "appjs": "0.0.20",
+    "forecast.io": "0.0.4"
   }
 }
