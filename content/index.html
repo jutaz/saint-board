@@ -1,19 +1,20 @@
 <!doctype html>
 <html>
 <head>
+  <meta charset="utf-8">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/custom.css" rel="stylesheet">
   <title>Hello World!</title>
 </head>
 <body>
-  <div class="row">
-    <div class="col-md-12 widgets">
+  <div class="row content">
+    <div class="col-md-4 widgets">
       <div class="clock">
         <h1 class="hours" style="text-align: center; font-size: 600%;"></h1>
         <h1 class="date" style="text-align: center; font-size: 400%;"></h1>
       </div>
     </div>
-    <!-- <div class="col-md-8">.col-md-4</div> -->
+    <div class="col-md-8">.col-md-4</div>
   </div>
   <script type="text/javascript" src="js/jquery.min.js"></script>
   <script type="text/javascript" src="js/bootstrap.min.js"></script>
@@ -40,29 +41,29 @@
     function getMonthName(month) {
       switch(month) {
         case 0:
-        return "Sausis";
+        return "Sausio";
         case 1:
-        return "Vasaris";
+        return "Vasario";
         case 2:
-        return "Kovas";
+        return "Kovo";
         case 3:
-        return "Balandis";
+        return "Balandžio";
         case 4:
-        return "Gegužė";
+        return "Gegužės";
         case 5:
-        return "Birželis";
+        return "Birželio";
         case 6:
-        return "Liepa";
+        return "Liepos";
         case 7:
-        return "Rugpjūtis";
+        return "Rugpjūčio";
         case 8:
-        return "Rugsėjis";
+        return "Rugsėjo";
         case 9:
-        return "Spalis";
+        return "Spalio";
         case 10:
-        return "Lapkritis";
+        return "Lapkričio";
         case 11:
-        return "gruodis";
+        return "Gruodžio";
       }
     }
     function checkTime(i) {

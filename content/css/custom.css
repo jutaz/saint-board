@@ -1,6 +1,34 @@
 body {
 	margin: 10px;
 }
+html, body {height: 100%}
+.content {
+	min-height: 100%;
+	height: 100%;
+	margin: 0px !important;
+	margin-top: -10px !important;
+}
 .widgets {
-	padding: 10px;
+	-webkit-box-shadow: 10px 0px 5px -4px #888;
+	-moz-box-shadow: 10px 0px 5px -4px #888;
+	box-shadow: 10px 0px 5px -4px #888;
+	min-height: 100%;
+	height: 100%;
+}
+.noBlur {
+	-webkit-filter: none;
+	-moz-filter: none;
+	-o-filter: none;
+	-ms-filter: none;
+	filter: none;
+	opacity: 1;
+}
+.blur {
+	display:block;
+	-webkit-filter: blur(10px);
+	-moz-filter: blur(15px);
+	-o-filter: blur(15px);
+	-ms-filter: blur(15px);
+	filter: blur(15px);
+	opacity: 0.95;
 }
