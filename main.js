@@ -1,18 +1,14 @@
 var appjs = require('appjs');
 var Forecast = require('forecast.io');
+var conf = require("./conf.json");
 
 var options = {
-  APIKey: "a8a522b736ed358c658383117a24c254"
+  APIKey: conf.api_key
 }
+
 forecast = new Forecast(options);
 
-// serve static files from a directory
 appjs.serveFilesFrom(__dirname + '/content');
-
-// handle requests from the browser
-appjs.router.post('/', function(request, response, next){
-  response.send('Hey! How are you ' + request.post('firstname'));
-})
 
 var window = appjs.createWindow({
   alpha: false,
@@ -21,7 +17,6 @@ var window = appjs.createWindow({
 });
 
 window.on('create', function(){
-  console.log("Window Created");
   window.frame.show().center();
 });
 
@@ -50,14 +45,14 @@ window.on('ready', function(){
   
 });
 
-window.on('close', function(){
-  console.log("Window Closed");
-});
-
-
 function get_forecast(callback) {
-  forecast.get("54.867359", "23.972169", {units: "si"}, function (err, res, data) {
+  forecast.get(conf.lat, conf.long, {units: "si"}, function (err, res, data) {
     if (err) throw err;
+    console.log(data.hourly.data[0]);
     callback(data);
   });
 }
+
+window.on('close', function(){
+  process.exit(0);
+});
