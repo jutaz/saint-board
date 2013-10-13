@@ -23,16 +23,19 @@ window.on('create', function(){
 window.on('ready', function(){
   window.process = process;
   window.module = module;
-
-  get_forecast(function(data) {
-    window.forecast = data;
-  });
-
-  setInterval(function() {
+  if(conf.env == "development") {
+    window.forecast = require('./sample-data.json');
+  } else {
     get_forecast(function(data) {
       window.forecast = data;
     });
-  }, (1000*60*2));
+
+    setInterval(function() {
+      get_forecast(function(data) {
+        window.forecast = data;
+      });
+    }, (1000*60*2));
+  }
 
   window.addEventListener('keydown', function(e) {
     if (e.keyCode === 27) {
