@@ -6,6 +6,10 @@
   <link href="css/custom.css" rel="stylesheet">
 </head>
 <body>
+  <div id="background"></div>
+  <div class="blur-wrapper col-md-4 ">
+    <div class="blur layer"></div>
+  </div>
   <div class="row content">
     <div class="col-md-4 widgets shadow-right">
       <div class="clock">
@@ -16,27 +20,37 @@
       <div class="weather">
         <div class="weather-tile current row">
           <h1 class="time pull-left col-md-3"></h1>
-          <img class="condition img-responsive col-md-6">
+          <div class="col-md-4 col-md-push-2">
+            <img class="condition img-responsive">
+          </div>
           <h1 class="temperature pull-right col-md-3"></h1>
         </div>
         <div class="weather-tile row">
           <h1 class="time pull-left col-md-3"></h1>
-          <img class="condition img-responsive col-md-6">
+          <div class="col-md-4 col-md-push-2">
+            <img class="condition img-responsive">
+          </div>
           <h1 class="temperature pull-right col-md-3"></h1>
         </div>
         <div class="weather-tile row">
           <h1 class="time pull-left col-md-3"></h1>
-          <img class="condition img-responsive col-md-6">
+          <div class="col-md-4 col-md-push-2">
+            <img class="condition img-responsive">
+          </div>
           <h1 class="temperature pull-right col-md-3"></h1>
         </div>          
         <div class="weather-tile row">
           <h1 class="time pull-left col-md-3"></h1>
-          <img class="condition img-responsive col-md-6">
+          <div class="col-md-4 col-md-push-2">
+            <img class="condition img-responsive">
+          </div>
           <h1 class="temperature pull-right col-md-3"></h1>
         </div>          
         <div class="weather-tile row">
           <h1 class="time pull-left col-md-3"></h1>
-          <img class="condition img-responsive col-md-6">
+          <div class="col-md-4 col-md-push-2">
+            <img class="condition img-responsive">
+          </div>
           <h1 class="temperature pull-right col-md-3"></h1>
         </div>
       </div>
@@ -129,22 +143,31 @@
       switch(condition) {
         case "clear-day":
         icon = "img/icons/Weather-Sun-icon.png";
+        break;
         case "clear-night":
         icon = "img/icons/Weather-Moon-icon.png";
+        break;
         case "rain":
         icon = "img/icons/Weather-Rain-icon.png";
+        break;
         case "snow":
         icon = "img/icons/Weather-Snow-icon.png";
+        break;
         case "fog":
         icon = "img/icons/Weather-Fog-day-icon.png";
+        break;
         case "sleet":
         icon = "img/icons/Weather-Sleet-icon.png";
+        break;
         case "partly-cloudy-day":
         icon = "img/icons/Weather-Partly-cloudy-day-icon.png";
+        break;
         case "partly-cloudy-night":
         icon = "img/icons/Weather-Partly-cloudy-night-icon.png";
+        break;
         default: 
         icon = "img/icons/Weather-Partly-cloudy-day-icon.png";
+        break;
       }
       return icon;
     }

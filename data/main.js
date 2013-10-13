@@ -51,7 +51,6 @@ window.on('ready', function(){
 function get_forecast(callback) {
   forecast.get(conf.lat, conf.long, {units: "si"}, function (err, res, data) {
     if (err) throw err;
-    console.log(data.hourly.data[0]);
     callback(data);
   });
 }
