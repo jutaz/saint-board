@@ -1,3 +1,3 @@
 #!/bin/sh
 
-./data/bin/node --harmony ./data/main.js 
+./data/bin/node --harmony ./data/app.js 
